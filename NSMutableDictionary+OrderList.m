@@ -1,4 +1,4 @@
-//  NSMutableDictionary+OrderList.m
+//  NSMutableDictionary+OrderList.h
 //  Created by 刘澈 on 14-3-19.
 //  Copyright (c) 2014年 刘澈. All rights reserved.
 
@@ -6,7 +6,7 @@
 
 @implementation NSMutableDictionary (OrderList)
 
- const char OrderListKey;
+const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
 
 //order
 -(void)putObject:(id)anObject forKey:(id<NSCopying>)aKey{
