@@ -1,10 +1,6 @@
-//
-//  NSMutableDictionary+OrderList.m
-//  TestRunLoop
-//
+//  NSMutableDictionary+OrderList.h
 //  Created by 刘澈 on 14-3-19.
 //  Copyright (c) 2014年 刘澈. All rights reserved.
-//
 
 #import "NSMutableDictionary+OrderList.h"
 
@@ -17,10 +13,11 @@
     NSMutableArray *orderList = [self getOrderList];
     if(orderList == nil){
         orderList = [[NSMutableArray alloc] init];
+        [self setOrderList:orderList];
     }
     [self setObject:anObject forKey:aKey];
     [orderList addObject:aKey];
-    [self setOrderList:orderList];
+   
 }
 
 
@@ -67,6 +64,15 @@
         return YES;
     }else{
         return NO;
+    }
+}
+
+-(id)getObjectForIndex:(NSUInteger)index{
+    NSMutableArray *orderList = [self getOrderList];
+    if(orderList != nil && [orderList objectAtIndex:index]!= nil){
+        return  [self objectForKey:[orderList objectAtIndex:index]];
+    }else{
+        return nil;
     }
 }
 
