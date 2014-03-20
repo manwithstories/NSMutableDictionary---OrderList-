@@ -72,8 +72,7 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
 }
 
 -(NSMutableArray *)getOrderList{
-    NSMutableArray* orderList =objc_getAssociatedObject(self,&OrderListKey);
-    return orderList;
+    return objc_getAssociatedObject(self,&OrderListKey);
 }
 
 @end
