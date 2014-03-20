@@ -1,5 +1,4 @@
 //  NSMutableDictionary+OrderList.h
-//  Created by 刘澈 on 14-3-19.
 //  Copyright (c) 2014年 刘澈. All rights reserved.
 
 #import "NSMutableDictionary+OrderList.h"
@@ -35,14 +34,6 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
     return [self objectForKey:aKey];
 }
 
--(void)setOrderList:(NSMutableArray *)orderList {
-    objc_setAssociatedObject(self,&OrderListKey,orderList,OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
--(NSMutableArray *)getOrderList{
-    NSMutableArray* orderList =objc_getAssociatedObject(self,&OrderListKey);
-    return orderList;
-}
 
 
 -(BOOL)deleteObjectForKey:(id)aKey{
@@ -74,6 +65,15 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
     }else{
         return nil;
     }
+}
+
+-(void)setOrderList:(NSMutableArray *)orderList {
+    objc_setAssociatedObject(self,&OrderListKey,orderList,OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(NSMutableArray *)getOrderList{
+    NSMutableArray* orderList =objc_getAssociatedObject(self,&OrderListKey);
+    return orderList;
 }
 
 @end
