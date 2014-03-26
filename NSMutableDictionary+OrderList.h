@@ -6,7 +6,7 @@
 
 @interface NSMutableDictionary (OrderList)
 
-/* 调用这个方法动态绑定属性，实现KEY的有序性 */
+/* 向字典中set元素时调用这个方法动态绑定属性，实现KEY的有序性 */
 -(void)putObject:(id)anObject forKey:(id<NSCopying>)aKey;
 
 /* 按照插入Key的顺序得到 key的有序列表 */
