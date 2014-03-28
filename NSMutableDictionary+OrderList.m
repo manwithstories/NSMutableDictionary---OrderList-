@@ -15,8 +15,11 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
         [self setOrderList:orderList];
     }
     [self setObject:anObject forKey:aKey];
-    [orderList addObject:aKey];
-   
+    if([orderList containsObject:aKey]){
+        [orderList replaceObjectAtIndex:[orderList indexOfObject:aKey] withObject:aKey];
+    }else{
+        [orderList addObject:aKey];
+    }
 }
 
 
