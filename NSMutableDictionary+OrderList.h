@@ -22,6 +22,16 @@
 -(BOOL)deleteAllKeys;
 
 /*按照插入Key的顺序获得一个对象，没有则返回nil */
--(id)getObjectForIndex:(NSUInteger)index;
+-(id)getObjectAtIndex:(NSUInteger)index;
+
+/*按照插入Key的自然升序排列，只能当KEY的值是数字和单个字母的时候才起作用 否则返回插入顺序 */
+-(NSArray *)getOrderAllKeysByAsc;
+
+/*按照插入Key的自然降序排列，只能当KEY的值是数字和单个字母的时候才起作用 否则返回插入顺序*/
+-(NSArray *)getOrderAllKeysByDesc;
+
+/*按照插入顺序取倒序Key*/
+-(NSArray *)getrReverseOrderAllKeys;
+
 
 @end

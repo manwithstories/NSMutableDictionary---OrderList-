@@ -15,10 +15,9 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
         [self setOrderList:orderList];
     }
     [self setObject:anObject forKey:aKey];
-    if([orderList containsObject:aKey]){
-        [orderList removeObject:aKey];
+    if(![orderList containsObject:aKey]){
+         [orderList addObject:aKey];
     }
-    [orderList addObject:aKey];
 }
 
 
@@ -60,10 +59,57 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
     }
 }
 
--(id)getObjectForIndex:(NSUInteger)index{
+-(id)getObjectAtIndex:(NSUInteger)index{
     NSMutableArray *orderList = [self getOrderList];
     if(orderList != nil && [orderList objectAtIndex:index]!= nil){
         return  [self objectForKey:[orderList objectAtIndex:index]];
+    }else{
+        return nil;
+    }
+}
+
+
+-(NSArray *)getOrderAllKeysByAsc{
+    NSMutableArray *orderList = [self getOrderList];
+    if(orderList != nil){
+        NSArray *resultArray = [orderList sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            if ([obj1 floatValue] > [obj2 floatValue]) {
+                return NSOrderedDescending;
+            }
+            if ([obj1 floatValue] < [obj2 floatValue]) {
+                return NSOrderedAscending;
+            }
+            return NSOrderedSame;
+        }];
+        return resultArray;
+    }else{
+        return nil;
+    }
+}
+
+
+-(NSArray *)getOrderAllKeysByDesc{
+    NSMutableArray *orderList = [self getOrderList];
+    if(orderList != nil){
+        NSArray *resultArray = [orderList sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            if ([obj1 floatValue] < [obj2 floatValue]) {
+                return NSOrderedDescending;
+            }
+            if ([obj1 floatValue] > [obj2 floatValue]) {
+                return NSOrderedAscending;
+            }
+            return NSOrderedSame;
+        }];
+        return resultArray;
+    }else{
+        return nil;
+    }
+}
+
+-(NSArray *)getrReverseOrderAllKeys{
+     NSMutableArray *orderList = [self getOrderList];
+    if(orderList != nil && [orderList count] > 1){
+        return [[orderList reverseObjectEnumerator] allObjects];
     }else{
         return nil;
     }
