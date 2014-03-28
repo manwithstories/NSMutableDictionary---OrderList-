@@ -111,7 +111,7 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
     if(orderList != nil && [orderList count] > 1){
         return [[orderList reverseObjectEnumerator] allObjects];
     }else{
-        return nil;
+        return orderList;
     }
 }
 
