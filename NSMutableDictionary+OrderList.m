@@ -108,7 +108,7 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
 
 -(NSArray *)getReverseOrderAllKeys{
      NSMutableArray *orderList = [self getOrderList];
-    if(orderList != nil && [orderList count] > 1){
+    if([orderList count] > 1){
         return [[orderList reverseObjectEnumerator] allObjects];
     }else{
         return orderList;
