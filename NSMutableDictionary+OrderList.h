@@ -31,7 +31,7 @@
 -(NSArray *)getOrderAllKeysByDesc;
 
 /*按照插入顺序取倒序Key*/
--(NSArray *)getrReverseOrderAllKeys;
+-(NSArray *)getReverseOrderAllKeys;
 
 
 @end
