@@ -116,6 +116,43 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
     }
 }
 
+
+-(NSArray *)getReverseOrderAllValues{
+    NSMutableArray *orderList = [self getOrderList];
+    if(orderList != nil && [orderList count]>0){
+        NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+        for(NSObject *obj in [[orderList reverseObjectEnumerator] allObjects]){
+           [tempArray addObject:[self objectForKey:obj]];
+        }
+        NSArray *values = [NSArray arrayWithArray:tempArray];
+#if! __has_feature(objc_arc)
+        [tempArray release];
+#endif
+        return values;
+    }else{
+        return  nil;
+    }
+}
+
+
+-(NSArray *)getOrderAllValues{
+    NSMutableArray *orderList = [self getOrderList];
+    if(orderList != nil && [orderList count]>0){
+        NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+        for(NSObject *obj in orderList){
+            [tempArray addObject:[self objectForKey:obj]];
+        }
+        NSArray *values = [NSArray arrayWithArray:tempArray];
+#if! __has_feature(objc_arc)
+        [tempArray release];
+#endif
+        return values;
+    }else{
+        return  nil;
+    }
+}
+
+
 -(void)setOrderList:(NSMutableArray *)orderList {
     objc_setAssociatedObject(self,&OrderListKey,orderList,OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }

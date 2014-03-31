@@ -33,5 +33,10 @@
 /*按照插入顺序取倒序Key*/
 -(NSArray *)getReverseOrderAllKeys;
 
+/*按照插入顺序取Values*/
+-(NSArray *)getOrderAllValues;
+
+/*按照插入顺序倒序取Values*/
+-(NSArray *)getReverseOrderAllValues;
 
 @end
