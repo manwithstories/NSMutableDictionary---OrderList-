@@ -17,7 +17,7 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
     }
     [self setObject:anObject forKey:aKey];
     if(![orderList containsObject:aKey]){
-         [orderList addObject:aKey];
+        [orderList addObject:aKey];
     }
 }
 
@@ -39,7 +39,7 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
 
 
 -(BOOL)deleteObjectForKey:(id)aKey{
-     NSMutableArray *orderList = [self getOrderList];
+    NSMutableArray *orderList = [self getOrderList];
     if(orderList != nil && [orderList containsObject:aKey]){
         [self removeObjectForKey:aKey];
         [orderList removeObject:aKey];
@@ -108,7 +108,7 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
 }
 
 -(NSArray *)getReverseOrderAllKeys{
-     NSMutableArray *orderList = [self getOrderList];
+    NSMutableArray *orderList = [self getOrderList];
     if([orderList count] > 1){
         return [[orderList reverseObjectEnumerator] allObjects];
     }else{
@@ -120,14 +120,11 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
 -(NSArray *)getReverseOrderAllValues{
     NSMutableArray *orderList = [self getOrderList];
     if(orderList != nil && [orderList count]>0){
-        NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+        NSMutableArray *tempArray = [NSMutableArray array];
         for(NSObject *obj in [[orderList reverseObjectEnumerator] allObjects]){
-           [tempArray addObject:[self objectForKey:obj]];
+            [tempArray addObject:[self objectForKey:obj]];
         }
         NSArray *values = [NSArray arrayWithArray:tempArray];
-#if! __has_feature(objc_arc)
-        [tempArray release];
-#endif
         return values;
     }else{
         return  nil;
@@ -138,14 +135,11 @@ const char* OrderListKey = "ORDER_LIST_PROPERTY_KEY";
 -(NSArray *)getOrderAllValues{
     NSMutableArray *orderList = [self getOrderList];
     if(orderList != nil && [orderList count]>0){
-        NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+        NSMutableArray *tempArray = [NSMutableArray array];
         for(NSObject *obj in orderList){
             [tempArray addObject:[self objectForKey:obj]];
         }
         NSArray *values = [NSArray arrayWithArray:tempArray];
-#if! __has_feature(objc_arc)
-        [tempArray release];
-#endif
         return values;
     }else{
         return  nil;
